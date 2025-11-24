@@ -1,4 +1,4 @@
-package com.cankolay.entertempo.ui.viewmodels
+package dev.cankolay.entertempo.ui.viewmodels
 
 import android.app.Application
 import android.content.Context
@@ -10,8 +10,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.cankolay.entertempo.R
-import com.cankolay.entertempo.ui.data.model.TimeSignature
+import dev.cankolay.entertempo.R
+import dev.cankolay.entertempo.ui.data.model.TimeSignature
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -28,16 +28,16 @@ class MetronomeViewModel(application: Application) : AndroidViewModel(applicatio
         )
     }
 
-    var bpm by mutableIntStateOf(120)
+    var bpm by mutableIntStateOf(value = 120)
         private set
 
-    var isPlaying by mutableStateOf(false)
+    var isPlaying by mutableStateOf(value = false)
         private set
 
-    var timeSignature by mutableStateOf(Constants.timeSignatures.first())
+    var timeSignature by mutableStateOf(value = Constants.timeSignatures.first())
         private set
 
-    var currentBeat by mutableIntStateOf(0)
+    var currentBeat by mutableIntStateOf(value = 0)
         private set
 
     fun updateBpm(bpm: Int) {

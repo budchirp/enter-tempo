@@ -1,4 +1,4 @@
-package com.cankolay.entertempo
+package dev.cankolay.entertempo
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,8 +9,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import com.cankolay.entertempo.ui.theme.AppTheme
-import com.cankolay.entertempo.ui.views.MetronomeView
+import dev.cankolay.entertempo.ui.theme.AppTheme
+import dev.cankolay.entertempo.ui.views.MetronomeView
 
 class AppActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +21,7 @@ class AppActivity : ComponentActivity() {
         setContent {
             AppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Column(modifier = Modifier.padding(innerPadding)) {
+                    Column(modifier = Modifier.padding(paddingValues = innerPadding)) {
                         MetronomeView()
                     }
                 }

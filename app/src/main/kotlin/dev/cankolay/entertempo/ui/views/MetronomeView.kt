@@ -1,4 +1,4 @@
-package com.cankolay.entertempo.ui.views
+package dev.cankolay.entertempo.ui.views
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -34,7 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.cankolay.entertempo.ui.viewmodels.MetronomeViewModel
+import dev.cankolay.entertempo.ui.viewmodels.MetronomeViewModel
 
 @Composable
 fun MetronomeView(viewModel: MetronomeViewModel = viewModel()) {

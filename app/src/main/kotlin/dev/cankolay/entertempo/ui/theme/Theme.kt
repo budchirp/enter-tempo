@@ -1,4 +1,4 @@
-package com.cankolay.entertempo.ui.theme
+package dev.cankolay.entertempo.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -13,21 +13,18 @@ import androidx.compose.ui.platform.LocalContext
 @Composable
 fun AppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-
-        darkTheme -> darkColorScheme()
-        else -> lightColorScheme()
-    }
-
     MaterialTheme(
-        colorScheme = colorScheme,
+        colorScheme = when {
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+                val context = LocalContext.current
+                if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+            }
+
+            darkTheme -> darkColorScheme()
+            else -> lightColorScheme()
+        },
         content = content
     )
 }

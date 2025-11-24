@@ -1,18 +1,24 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.android)
+    alias(libs.plugins.kotlin)
     alias(libs.plugins.kotlin.compose)
 }
 
 android {
-    namespace = "com.cankolay.entertempo"
+    namespace = "dev.cankolay.entertempo"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.cankolay.entertempo"
+        applicationId = "dev.cankolay.entertempo"
 
-        minSdk = 28
-        targetSdk = 36
+        minSdk =
+            libs.versions.minSdk
+                .get()
+                .toInt()
+        targetSdk =
+            libs.versions.compileSdk
+                .get()
+                .toInt()
 
         versionCode = 1
         versionName = "1.0"
@@ -55,11 +61,13 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
-    kotlinOptions { jvmTarget = "17" }
+    kotlinOptions {
+        jvmTarget = "21"
+    }
 
     buildFeatures {
         compose = true
@@ -68,8 +76,9 @@ android {
 
 dependencies {
     implementation(libs.core.ktx)
+    implementation(libs.core.splashscreen)
 
-    implementation(libs.androidx.activity.compose)
+    implementation(libs.activity)
 
     implementation(platform(libs.compose.bom))
 

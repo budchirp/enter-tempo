@@ -6,7 +6,9 @@ plugins {
 
 android {
     namespace = "dev.cankolay.entertempo"
-    compileSdk = 36
+    compileSdk = libs.versions.compileSdk
+        .get()
+        .toInt()
 
     defaultConfig {
         applicationId = "dev.cankolay.entertempo"

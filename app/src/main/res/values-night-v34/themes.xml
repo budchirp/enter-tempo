@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.AppSplashColors" parent="Theme.SplashScreen">
+        <item name="android:windowSplashScreenBackground">@android:color/system_surface_dark</item>
+    </style>
+</resources>

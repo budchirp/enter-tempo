@@ -1,5 +1,3 @@
-rootProject.name = "EnterTempo"
-
 pluginManagement {
     repositories {
         google()
@@ -14,5 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
+rootProject.name = "EnterTempo"
 
 include(":app")

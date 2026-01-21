@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.android)
-    alias(libs.plugins.kotlin)
     alias(libs.plugins.kotlin.compose)
 }
 
@@ -24,10 +23,6 @@ android {
 
         versionCode = 1
         versionName = "1.0"
-    }
-
-    sourceSets.all {
-        kotlin.srcDir("src/$name/kotlin")
     }
 
     signingConfigs {
@@ -67,10 +62,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_21
     }
 
-    kotlinOptions {
-        jvmTarget = "21"
-    }
-
     buildFeatures {
         compose = true
     }
@@ -81,17 +72,16 @@ dependencies {
     implementation(libs.core.splashscreen)
 
     implementation(libs.activity)
+    implementation(libs.appcompat)
 
     implementation(platform(libs.compose.bom))
 
-    implementation(libs.compose.ui)
     implementation(libs.compose.foundation)
-    implementation(libs.compose.ui.graphics)
+    implementation(libs.compose.ui)
     implementation(libs.compose.material3)
     implementation(libs.compose.material.icons)
     implementation(libs.compose.material.icons.extended)
 
-    implementation(libs.lifecycle.runtime.compose)
     implementation(libs.lifecycle.viewmodel)
 
     implementation(libs.androidx.media3)

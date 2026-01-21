@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.App" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.App" parent="Theme.AppCompat.DayNight.NoActionBar" />
+
+    <style name="Theme.AppSplashColors" parent="Theme.SplashScreen" />
+
+    <style name="Theme.AppSplash" parent="Theme.AppSplashColors">
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="postSplashScreenTheme">@style/Theme.App</item>
+    </style>
 </resources>

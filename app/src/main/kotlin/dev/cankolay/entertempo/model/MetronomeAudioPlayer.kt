@@ -1,17 +1,22 @@
-package dev.cankolay.entertempo.ui.service
+package dev.cankolay.entertempo.model
 
 import android.content.Context
 import android.media.AudioAttributes
 import android.media.SoundPool
+import android.util.Log
 import dev.cankolay.entertempo.R
-import dev.cankolay.entertempo.ui.model.TimeSignature
+import dev.cankolay.entertempo.shared.model.TimeSignature
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
-class MetronomeService(context: Context) {
+class MetronomeAudioPlayer(context: Context) {
+    private companion object {
+        const val tag = "MetronomeAudioPlayer"
+    }
+
     private var soundPool: SoundPool? = null
 
     private var clickSoundId: Int = 0
@@ -19,11 +24,11 @@ class MetronomeService(context: Context) {
 
     private var job: Job? = null
 
-    var currentBeat = MutableStateFlow(0)
-    var isPlaying = MutableStateFlow(false)
+    val currentBeat = MutableStateFlow(value = 0)
+    val isPlaying = MutableStateFlow(value = false)
 
     init {
-        load(context)
+        load(context = context)
     }
 
     private fun load(context: Context) {
@@ -38,14 +43,14 @@ class MetronomeService(context: Context) {
             .build()
 
         try {
-            clickSoundId = soundPool?.load(context, R.raw.click_accent, 1) ?: 0
-            accentClickSoundId = soundPool?.load(context, R.raw.click, 1) ?: 0
+            clickSoundId = soundPool?.load(context, R.raw.click, 1) ?: 0
+            accentClickSoundId = soundPool?.load(context, R.raw.click_accent, 1) ?: 0
 
             if (clickSoundId == 0 || accentClickSoundId == 0) {
-                println("Error: Could not load one or more click sounds.")
+                Log.e(tag, "Could not load one or more click sounds.")
             }
         } catch (e: Exception) {
-            println("Error loading sounds: ${e.localizedMessage}")
+            Log.e(tag, "Error loading sounds.", e)
         }
     }
 
@@ -67,10 +72,15 @@ class MetronomeService(context: Context) {
                         accentClickSoundId
                     } else {
                         clickSoundId
-                    }, 1.0f, 1.0f, 1, 0, 1.0f
+                    },
+                    1.0f,
+                    1.0f,
+                    1,
+                    0,
+                    1.0f
                 )
 
-                delay(delayMillis)
+                delay(timeMillis = delayMillis)
             }
         }
     }

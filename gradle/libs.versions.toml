@@ -1,24 +1,28 @@
 [versions]
-compileSdk = "36"
+compileSdk = "37"
 minSdk = "28"
 
-android-plugin = "9.0.0"
-kotlin = "2.3.0"
+android-plugin = "9.2.1"
+kotlin = "2.3.21"
 
-compose-bom = "2026.01.00"
-compose = "1.10.1"
+compose-bom = "2026.05.01"
+compose = "1.11.2"
 
-core = "1.17.0"
+wear-compose = "1.7.0-alpha03"
+
+core = "1.18.0"
 core-splashscreen = "1.2.0"
 
-activity = "1.12.2"
+activity = "1.13.0"
 appcompat = "1.7.1"
 
 lifecycle = "2.10.0"
-material = "1.5.0-alpha12"
+material = "1.5.0-alpha20"
 material-icons = '1.7.8'
 
-media3 = "1.9.0"
+media3 = "1.10.1"
+
+play-services-wearable = "20.0.1"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core" }
@@ -34,10 +38,15 @@ compose-material3 = { group = "androidx.compose.material3", name = "material3", 
 compose-material-icons = { group = "androidx.compose.material", name = "material-icons-core", version.ref = "material-icons" }
 compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "material-icons" }
 
+wear-compose-foundation = { group = "androidx.wear.compose", name = "compose-foundation", version.ref = "wear-compose" }
+wear-compose-material3 = { group = "androidx.wear.compose", name = "compose-material3", version.ref = "wear-compose" }
+
 lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 
 androidx-media3 = { group = "androidx.media3", name = "media3-common-ktx", version.ref = "media3" }
+play-services-wearable = { group = "com.google.android.gms", name = "play-services-wearable", version.ref = "play-services-wearable" }
 
 [plugins]
 android = { id = "com.android.application", version.ref = "android-plugin" }
+android-library = { id = "com.android.library", version.ref = "android-plugin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
